@@ -3,16 +3,19 @@ import { customElement, property } from 'lit/decorators.js';
 
 @customElement('my-element')
 export class MyElement extends LitElement {
-  @property({ type: String })
-  greeting = 'there';
+  @property()
+  msg: string = 'hello world!';
 
   override render() {
-    return html`<p>hello ${this.greeting}!</p>`;
+    return html`
+      <p>${this.msg}</p>
+      <p>hello from lit!</p>
+    `;
   }
 }
 
-declare global {
-  interface HTMLElementTagNameMap {
-    'my-element': MyElement;
-  }
-}
+// declare global {
+//   interface HTMLElementTagNameMap {
+//     'my-element': MyElement;
+//   }
+// }
