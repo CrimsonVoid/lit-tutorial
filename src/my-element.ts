@@ -4,13 +4,18 @@ import { customElement, property } from 'lit/decorators.js';
 @customElement('my-element')
 export class MyElement extends LitElement {
   @property()
-  msg: string = 'hello world!';
+  name = 'there!';
 
   override render() {
     return html`
-      <p>${this.msg}</p>
-      <p>hello from lit!</p>
+      <p>hello ${this.name}</p>
+      <input @input=${this.changeName} placeholder="enter your name" />
     `;
+  }
+
+  changeName(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.name = input.value;
   }
 }
 
