@@ -4,18 +4,21 @@ import { customElement, property } from 'lit/decorators.js';
 @customElement('my-element')
 export class MyElement extends LitElement {
   @property()
-  name = 'there!';
+  checked = false;
 
   override render() {
     return html`
-      <p>hello ${this.name}</p>
-      <input @input=${this.changeName} placeholder="enter your name" />
+      <div>
+        <input type="text" ?disabled="${!this.checked}" value="Hello there." />
+      </div>
+      <label>
+        <input type="checkbox" @change=${this.setChecked} /> Enable editing
+      </label>
     `;
   }
 
-  changeName(event: Event) {
-    const input = event.target as HTMLInputElement;
-    this.name = input.value;
+  setChecked(event: Event) {
+    this.checked = (event.target as HTMLInputElement).checked;
   }
 }
 
