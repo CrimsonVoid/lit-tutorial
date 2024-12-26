@@ -3,8 +3,8 @@ import { customElement, property } from 'lit/decorators.js';
 
 @customElement('my-element')
 export class MyElement extends LitElement {
-  @property()
-  checked = false;
+  @property({ type: Boolean })
+  checked: boolean = false;
 
   override render() {
     return html`
